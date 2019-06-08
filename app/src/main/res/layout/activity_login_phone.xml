@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/gradient"
+	android:padding="20dp"
+	tools:context=".ui.LoginPhoneActivity">
+
+	<LinearLayout
+		android:id="@+id/phoneview"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:visibility="visible">
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="80dp"
+			android:text="Enter your mobile number"
+			android:textColor="#fff"
+			android:textSize="20sp" />
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:paddingTop="50dp">
+
+			<EditText
+				android:id="@+id/code"
+				android:layout_width="60dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="0"
+				android:backgroundTint="#fff"
+				android:enabled="false"
+				android:inputType="phone"
+				android:paddingLeft="5dp"
+				android:paddingRight="5dp"
+				android:text="+91"
+				android:textColor="#fff"
+				android:textSize="30sp" />
+
+			<EditText
+				android:id="@+id/phone"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:backgroundTint="#fff"
+				android:ems="10"
+				android:gravity="center"
+				android:inputType="phone"
+				android:maxLength="10"
+				android:paddingLeft="5dp"
+				android:paddingRight="5dp"
+				android:textColor="#fff"
+				android:textSize="30sp" />
+		</LinearLayout>
+
+		<Button
+			android:id="@+id/getotp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:layout_marginTop="30dp"
+			android:background="@drawable/white_fullround_btn"
+			android:paddingLeft="43dp"
+			android:paddingTop="20dp"
+			android:paddingRight="43dp"
+			android:paddingBottom="20dp"
+			android:text="GET OTP"
+			android:textColor="#d35400 "
+			android:textSize="16sp" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/progressview"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:gravity="center"
+		android:orientation="vertical"
+		android:visibility="gone">
+
+		<ProgressBar
+			android:id="@+id/progressBar3"
+			style="@style/AppTheme.progressBarLight"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:indeterminate="true"
+			android:indeterminateTint="#fff"
+			android:indeterminateTintMode="src_atop" />
+
+		<TextView
+			android:id="@+id/textView9"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="Please Wait..."
+			android:textAlignment="center"
+			android:textColor="#fff"
+			android:textSize="30sp"
+			android:textStyle="bold" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/otpview"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:padding="20dp"
+		android:visibility="gone">
+
+		<TextView
+
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="60dp"
+			android:text="Enter the code sent to you at "
+			android:textColor="#fff"
+
+			android:textSize="20sp" />
+
+		<TextView
+			android:id="@+id/number"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="20dp"
+			android:textColor="#fff"
+			android:textSize="24sp"
+			android:textStyle="bold" />
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:paddingTop="50dp">
+
+
+			<EditText
+				android:id="@+id/otp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:backgroundTint="#fff"
+				android:ems="10"
+				android:inputType="phone"
+				android:paddingLeft="5dp"
+				android:paddingRight="5dp"
+				android:textColor="#fff"
+				android:textSize="30sp" />
+		</LinearLayout>
+
+		<Button
+			android:id="@+id/done"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:layout_marginTop="30dp"
+			android:background="#ffffff"
+			android:paddingLeft="43dp"
+			android:paddingTop="20dp"
+			android:paddingRight="43dp"
+			android:paddingBottom="20dp"
+			android:text="DONE"
+			android:textColor="#d35400 "
+			android:textSize="16sp" />
+
+		<Button
+			android:id="@+id/edit"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:background="@android:color/transparent"
+			android:text="Edit mobile number"
+			android:textAlignment="center"
+			android:textAllCaps="false"
+			android:textColor="#fff" />
+
+		<Button
+			android:id="@+id/resend"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@android:color/transparent"
+			android:text="Resend OTP"
+			android:textAlignment="center"
+			android:textAllCaps="false"
+			android:textColor="#fff" />
+
+	</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

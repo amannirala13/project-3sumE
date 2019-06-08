@@ -1,0 +1,137 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:keepScreenOn="true"
+	tools:context=".ui.LiveRoomActivity">
+
+	<tech.xlogix.threeSum.ui.GridVideoViewContainer
+		android:id="@+id/grid_video_view_container"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" />
+
+	<ViewStub
+		android:id="@id/small_video_view_dock"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="60dp"
+		android:inflatedId="@id/small_video_view_dock"
+		android:layout="@layout/small_video_view_dock" />
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<tech.xlogix.threeSum.utils.AGLinearLayout
+			android:id="@+id/top_area"
+			android:layout_width="match_parent"
+			android:layout_height="80dp"
+			android:gravity="center_vertical"
+			android:orientation="horizontal"
+			android:weightSum="3.5">
+
+			<LinearLayout
+				android:layout_width="54dp"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="12dp"
+				android:layout_marginEnd="12dp"
+				android:layout_weight="3"
+				android:background="@drawable/white_fullround_btn"
+				android:orientation="horizontal">
+
+				<TextView
+					android:id="@+id/room_name"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_weight="1.5"
+					android:paddingStart="8dp"
+					android:paddingEnd="8dp"
+					android:textColor="@color/colorPrimary"
+					android:textSize="32sp" />
+
+				<TextView
+					android:id="@+id/live"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_weight="1.5"
+					android:paddingStart="8dp"
+					android:paddingEnd="8dp"
+					android:text="LIVE"
+					android:textAlignment="center"
+					android:textAllCaps="true"
+					android:textColor="@color/colorPrimary"
+					android:textSize="32sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<ImageView
+				android:layout_width="54dp"
+				android:layout_height="match_parent"
+				android:layout_margin="8dp"
+				android:layout_weight="0.5"
+				android:onClick="onClickClose"
+				android:src="@drawable/btn_close" />
+
+		</tech.xlogix.threeSum.utils.AGLinearLayout>
+
+		<LinearLayout
+			android:id="@+id/bottom_container"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentStart="true"
+			android:layout_alignParentBottom="true"
+			android:orientation="vertical">
+
+			<tech.xlogix.threeSum.utils.AGLinearLayout
+				android:id="@+id/bottom_action_container"
+				android:layout_width="match_parent"
+				android:layout_height="80dp"
+				android:gravity="center_vertical"
+				android:orientation="horizontal"
+				android:weightSum="5">
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_margin="8dp"
+					android:layout_weight="1"
+					android:onClick="onShowHideClicked"
+					android:src="@drawable/btn_hide" />
+
+				<ImageView
+					android:id="@+id/btn_1"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_margin="8dp"
+					android:layout_weight="1"
+					android:src="@drawable/btn_request_broadcast" />
+
+				<ImageView
+					android:id="@+id/btn_2"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_margin="8dp"
+					android:layout_weight="1"
+					android:src="@drawable/btn_switch_camera" />
+
+				<ImageView
+					android:id="@+id/btn_3"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_margin="8dp"
+					android:layout_weight="1"
+					android:src="@drawable/btn_mute" />
+
+				<ImageView
+					android:id="@+id/btn_4"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_margin="8dp"
+					android:layout_weight="1"
+					android:onClick="onBtn4Clicked"
+					android:src="@drawable/btn_beautification" />
+			</tech.xlogix.threeSum.utils.AGLinearLayout>
+		</LinearLayout>
+	</RelativeLayout>
+</FrameLayout>

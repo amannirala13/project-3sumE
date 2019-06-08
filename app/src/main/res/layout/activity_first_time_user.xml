@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="#fff"
+	android:padding="20dp"
+	tools:context=".ui.auth.FirstTimeUser">
+
+	<LinearLayout
+		android:id="@+id/mainview"
+		android:layout_width="match_parent"
+		android:layout_height="506dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginEnd="8dp"
+		android:layout_marginBottom="8dp"
+		android:orientation="vertical"
+		android:visibility="visible"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<TextView
+
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Welcome to 3SomE"
+			android:textColor="#606060"
+			android:textSize="20sp" />
+
+		<TextView
+
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Please tell us about yourself"
+			android:textColor="#606060"
+			android:textSize="20sp" />
+
+		<com.google.android.material.textfield.TextInputLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="44dp"
+			android:layout_marginBottom="16dp"
+			android:background="@drawable/textfield_grey_round"
+			android:padding="10dp"
+			android:textColorHint="#61000000">
+
+			<com.google.android.material.textfield.TextInputEditText
+				android:id="@+id/fullname"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="5dp"
+				android:layout_weight="1"
+				android:background="#f1f1f1"
+				android:hint="Full Name"
+				android:inputType="text"
+				android:textColorHighlight="#000"
+				android:textColorHint="#111"
+				android:textColorLink="#000" />
+		</com.google.android.material.textfield.TextInputLayout>
+
+		<com.google.android.material.textfield.TextInputLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:background="@drawable/textfield_grey_round"
+			android:padding="10dp"
+			android:textColorHint="#61000000">>
+
+			<com.google.android.material.textfield.TextInputEditText
+				android:id="@+id/email"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="5dp"
+				android:layout_weight="1"
+				android:background="#f1f1f1"
+				android:hint="Email"
+				android:inputType="textEmailAddress"
+				android:textColorHighlight="#000"
+				android:textColorLink="#000" />
+		</com.google.android.material.textfield.TextInputLayout>
+
+
+		<Button
+			android:id="@+id/done"
+			android:layout_width="150dp"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:background="@drawable/white_round_btn"
+			android:padding="19dp"
+			android:shadowColor="#33606060"
+			android:shadowRadius="10"
+			android:text="Done"
+			android:textColor="#9b9b9b" />
+
+		<Button
+			android:id="@+id/button11"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@android:color/transparent"
+			android:paddingTop="8dp"
+			android:text="Already have an account? Login Here!"
+			android:textColor="#d35400" />
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/progressview"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:gravity="center"
+		android:orientation="vertical"
+		android:visibility="gone">
+
+		<ProgressBar
+			android:id="@+id/progressBar3"
+			style="@style/AppTheme.progressBarLight"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:indeterminate="true"
+			android:indeterminateTint="@color/colorPrimary"
+			android:indeterminateTintMode="src_atop" />
+
+		<TextView
+			android:id="@+id/textView9"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="Please Wait..."
+			android:textAlignment="center"
+			android:textColor="@color/colorPrimary"
+			android:textSize="30sp"
+			android:textStyle="bold" />
+
+	</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
