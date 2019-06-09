@@ -27,7 +27,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void initUi() {
-        RecyclerView v_profiles = (RecyclerView) findViewById(R.id.profiles);
+        RecyclerView v_profiles = findViewById(R.id.profiles);
         v_profiles.setHasFixedSize(true);
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);

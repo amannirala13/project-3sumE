@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewStub;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,6 +20,8 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,14 +31,23 @@ import io.agora.rtc.Constants;
 import io.agora.rtc.RtcEngine;
 import io.agora.rtc.video.VideoCanvas;
 import io.agora.rtc.video.VideoEncoderConfiguration;
+import io.reactivex.BackpressureStrategy;
+import io.reactivex.Flowable;
+import io.reactivex.FlowableEmitter;
+import io.reactivex.FlowableOnSubscribe;
+import io.reactivex.schedulers.Timed;
 import tech.xlogix.threeSum.R;
 import tech.xlogix.threeSum.common.Constant;
 import tech.xlogix.threeSum.model.AGEventHandler;
 import tech.xlogix.threeSum.model.ConstantApp;
 import tech.xlogix.threeSum.model.VideoStatusData;
+import tech.xlogix.threeSum.ui.liveRoom.FaceBeautificationPopupWindow;
+import tech.xlogix.threeSum.ui.liveRoom.GridVideoViewContainer;
+import tech.xlogix.threeSum.ui.liveRoom.VideoViewEventListener;
+import tech.xlogix.threeSum.ui.videoEmoticans.Emoticons;
+import tech.xlogix.threeSum.ui.videoEmoticans.EmoticonsView;
 
 public class LiveRoomActivity extends BaseActivity implements AGEventHandler {
-
     private final static Logger log = LoggerFactory.getLogger(LiveRoomActivity.class);
 
     private GridVideoViewContainer mGridVideoViewContainer;
@@ -43,10 +56,151 @@ public class LiveRoomActivity extends BaseActivity implements AGEventHandler {
 
     private final HashMap<Integer, SurfaceView> mUidsList = new HashMap<>(); // uid = 0 || uid == EngineConfig.mUid
 
+    private Subscription emoticonSubscription;
+    private Subscriber subscriber;
+    private final int MINIMUM_DURATION_BETWEEN_EMOTICONS = 300; // in milliseconds
+    private Animation emoticonClickAnimation;
+
+    // Emoticons views.
+    private EmoticonsView emoticonsView;
+    private ImageView likeEmoticonButton, loveEmoticonButton, hahaEmoticonButton, wowEmoticonButton, sadEmoticonButton, angryEmoticonButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live_room);
+
+        likeEmoticonButton = findViewById(R.id.like_emoticon);
+        loveEmoticonButton = findViewById(R.id.love_emoticon);
+        hahaEmoticonButton = findViewById(R.id.haha_emoticon);
+        wowEmoticonButton = findViewById(R.id.wow_emoticon);
+        sadEmoticonButton = findViewById(R.id.sad_emoticon);
+        angryEmoticonButton = findViewById(R.id.angry_emoticon);
+        emoticonsView = findViewById(R.id.custom_view);
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        //Create an instance of FlowableOnSubscribe which will convert click events to streams
+        FlowableOnSubscribe flowableOnSubscribe = new FlowableOnSubscribe() {
+            @Override
+            public void subscribe(final FlowableEmitter emitter) throws Exception {
+                convertClickEventToStream(emitter);
+            }
+        };
+        //Give the backpressure strategy as BUFFER, so that the click items do not drop.
+        Flowable emoticonsFlowable = Flowable.create(flowableOnSubscribe, BackpressureStrategy.BUFFER);
+        //Convert the stream to a timed stream, as we require the timestamp of each event
+        Flowable<Timed> emoticonsTimedFlowable = emoticonsFlowable.timestamp();
+        subscriber = getSubscriber();
+        //Subscribe
+        emoticonsTimedFlowable.subscribeWith(subscriber);
+    }
+
+    private Subscriber getSubscriber() {
+        return new Subscriber<Timed<Emoticons>>() {
+            @Override
+            public void onSubscribe(Subscription s) {
+                emoticonSubscription = s;
+                emoticonSubscription.request(1);
+
+                // for lazy evaluation.
+                emoticonsView.initView(LiveRoomActivity.this);
+            }
+
+            @Override
+            public void onNext(final Timed<Emoticons> timed) {
+
+                emoticonsView.addView(timed.value());
+
+                long currentTimeStamp = System.currentTimeMillis();
+                long diffInMillis = currentTimeStamp - ((Timed) timed).time();
+                if (diffInMillis > MINIMUM_DURATION_BETWEEN_EMOTICONS) {
+                    emoticonSubscription.request(1);
+                } else {
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            emoticonSubscription.request(1);
+                        }
+                    }, MINIMUM_DURATION_BETWEEN_EMOTICONS - diffInMillis);
+                }
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                //Do nothing
+            }
+
+            @Override
+            public void onComplete() {
+                if (emoticonSubscription != null) {
+                    emoticonSubscription.cancel();
+                }
+            }
+        };
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (emoticonSubscription != null) {
+            emoticonSubscription.cancel();
+        }
+    }
+
+
+    private void convertClickEventToStream(final FlowableEmitter emitter) {
+        likeEmoticonButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doOnClick(likeEmoticonButton, emitter, Emoticons.LIKE);
+            }
+        });
+
+        loveEmoticonButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doOnClick(loveEmoticonButton, emitter, Emoticons.LOVE);
+            }
+        });
+
+        hahaEmoticonButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doOnClick(hahaEmoticonButton, emitter, Emoticons.HAHA);
+            }
+        });
+
+        wowEmoticonButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doOnClick(wowEmoticonButton, emitter, Emoticons.WOW);
+            }
+        });
+
+        sadEmoticonButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doOnClick(sadEmoticonButton, emitter, Emoticons.SAD);
+            }
+        });
+
+        angryEmoticonButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doOnClick(angryEmoticonButton, emitter, Emoticons.ANGRY);
+            }
+        });
+    }
+
+    private void doOnClick(View view, FlowableEmitter emitter, Emoticons emoticons) {
+        emoticonClickAnimation = AnimationUtils.loadAnimation(this, R.anim.emoticon_click_animation);
+        view.startAnimation(emoticonClickAnimation);
+        emitter.onNext(emoticons);
     }
 
     @Override
@@ -332,9 +486,9 @@ public class LiveRoomActivity extends BaseActivity implements AGEventHandler {
             public void run() {
                 doRemoveRemoteUi(uid);
 
-                ImageView button1 = (ImageView) findViewById(R.id.btn_1);
-                ImageView button2 = (ImageView) findViewById(R.id.btn_2);
-                ImageView button3 = (ImageView) findViewById(R.id.btn_3);
+                ImageView button1 = findViewById(R.id.btn_1);
+                ImageView button2 = findViewById(R.id.btn_2);
+                ImageView button3 = findViewById(R.id.btn_3);
                 audienceUI(button1, button2, button3);
 
                 doShowButtons(false);

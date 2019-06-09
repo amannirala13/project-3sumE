@@ -53,8 +53,8 @@ public class VideoProfileAdapter extends RecyclerView.Adapter {
         public ProfileHolder(View itemView) {
             super(itemView);
 
-            resolution = (TextView) itemView.findViewById(R.id.resolution);
-            frameRate = (TextView) itemView.findViewById(R.id.frame_rate);
+            resolution = itemView.findViewById(R.id.resolution);
+            frameRate = itemView.findViewById(R.id.frame_rate);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

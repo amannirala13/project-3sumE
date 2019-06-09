@@ -55,16 +55,18 @@
 		<item>640x360</item> // 360P
 		<item>640x480</item> // 480P
 		<item>1280x720</item> // 720P
+		<item>1920x1080</item> // 1080P
 	</string-array>
 
 	<string-array
 		name="string_array_frame_rate">
-		<item>15</item> // 120P
-		<item>15</item> // 180P
-		<item>15</item> // 240P
-		<item>15</item> // 360P
-		<item>15</item> // 480P
-		<item>15</item> // 720P
+		<item>30</item> // 120P
+		<item>30</item> // 180P
+		<item>30</item> // 240P
+		<item>30</item> // 360P
+		<item>30</item> // 480P
+		<item>30</item> // 720P
+		<item>30</item> // 1080P
 	</string-array>
 
 	<string-array
@@ -75,6 +77,7 @@
 		<item>400</item> // 360P
 		<item>500</item> // 480P
 		<item>1000</item> // 720P
+		<item>1600</item> // 1080P
 	</string-array>
 
 	<string name="label_title_resolution">Resolution\n(Width * Height)</string>

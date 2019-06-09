@@ -5,7 +5,7 @@
 	android:keepScreenOn="true"
 	tools:context=".ui.LiveRoomActivity">
 
-	<tech.xlogix.threeSum.ui.GridVideoViewContainer
+	<tech.xlogix.threeSum.ui.liveRoom.GridVideoViewContainer
 		android:id="@+id/grid_video_view_container"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent" />
@@ -75,63 +75,116 @@
 
 		</tech.xlogix.threeSum.utils.AGLinearLayout>
 
-		<LinearLayout
-			android:id="@+id/bottom_container"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_alignParentStart="true"
-			android:layout_alignParentBottom="true"
-			android:orientation="vertical">
+		<tech.xlogix.threeSum.utils.AGLinearLayout
+			android:id="@+id/bottom_action_container"
+			android:layout_width="80dp"
+			android:layout_height="match_parent"
+			android:layout_below="@+id/top_area"
+			android:layout_alignParentEnd="true"
+			android:layout_marginEnd="12dp"
+			android:layout_marginBottom="80dp"
+			android:orientation="vertical"
+			android:weightSum="5">
 
-			<tech.xlogix.threeSum.utils.AGLinearLayout
-				android:id="@+id/bottom_action_container"
+			<ImageView
 				android:layout_width="match_parent"
-				android:layout_height="80dp"
-				android:gravity="center_vertical"
-				android:orientation="horizontal"
-				android:weightSum="5">
+				android:layout_height="match_parent"
+				android:layout_margin="8dp"
+				android:layout_weight="1"
+				android:onClick="onShowHideClicked"
+				android:src="@drawable/btn_hide" />
 
-				<ImageView
-					android:layout_width="wrap_content"
-					android:layout_height="match_parent"
-					android:layout_margin="8dp"
-					android:layout_weight="1"
-					android:onClick="onShowHideClicked"
-					android:src="@drawable/btn_hide" />
+			<ImageView
+				android:id="@+id/btn_1"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_margin="8dp"
+				android:layout_weight="1"
+				android:src="@drawable/btn_request_broadcast" />
 
-				<ImageView
-					android:id="@+id/btn_1"
-					android:layout_width="wrap_content"
-					android:layout_height="match_parent"
-					android:layout_margin="8dp"
-					android:layout_weight="1"
-					android:src="@drawable/btn_request_broadcast" />
+			<ImageView
+				android:id="@+id/btn_2"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_margin="8dp"
+				android:layout_weight="1"
+				android:src="@drawable/btn_switch_camera" />
 
-				<ImageView
-					android:id="@+id/btn_2"
-					android:layout_width="wrap_content"
-					android:layout_height="match_parent"
-					android:layout_margin="8dp"
-					android:layout_weight="1"
-					android:src="@drawable/btn_switch_camera" />
+			<ImageView
+				android:id="@+id/btn_3"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_margin="8dp"
+				android:layout_weight="1"
+				android:src="@drawable/btn_mute" />
 
-				<ImageView
-					android:id="@+id/btn_3"
-					android:layout_width="wrap_content"
-					android:layout_height="match_parent"
-					android:layout_margin="8dp"
-					android:layout_weight="1"
-					android:src="@drawable/btn_mute" />
+			<ImageView
+				android:id="@+id/btn_4"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_margin="8dp"
+				android:layout_weight="1"
+				android:onClick="onBtn4Clicked"
+				android:src="@drawable/btn_beautification" />
+		</tech.xlogix.threeSum.utils.AGLinearLayout>
 
-				<ImageView
-					android:id="@+id/btn_4"
-					android:layout_width="wrap_content"
-					android:layout_height="match_parent"
-					android:layout_margin="8dp"
-					android:layout_weight="1"
-					android:onClick="onBtn4Clicked"
-					android:src="@drawable/btn_beautification" />
-			</tech.xlogix.threeSum.utils.AGLinearLayout>
+		<tech.xlogix.threeSum.ui.videoEmoticans.EmoticonsView
+			android:id="@+id/custom_view"
+			android:layout_width="match_parent"
+			android:layout_height="120dp"
+			android:layout_above="@+id/emoticons_view"
+			android:layout_marginBottom="48dp" />
+
+		<LinearLayout
+			android:id="@+id/emoticons_view"
+			android:layout_width="match_parent"
+			android:layout_height="100dp"
+			android:layout_alignParentBottom="true"
+			android:gravity="center"
+			android:orientation="horizontal">
+
+			<ImageView
+				android:id="@+id/like_emoticon"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:src="@drawable/like_48" />
+
+			<ImageView
+				android:id="@+id/love_emoticon"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:src="@drawable/love_48" />
+
+			<ImageView
+				android:id="@+id/haha_emoticon"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@null"
+				android:src="@drawable/haha_48" />
+
+			<ImageView
+				android:id="@+id/wow_emoticon"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:src="@drawable/wow_48" />
+
+			<ImageView
+				android:id="@+id/sad_emoticon"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:src="@drawable/sad_48" />
+
+			<ImageView
+				android:id="@+id/angry_emoticon"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:src="@drawable/angry_48" />
 		</LinearLayout>
 	</RelativeLayout>
 </FrameLayout>

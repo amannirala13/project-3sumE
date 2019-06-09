@@ -10,10 +10,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.zxing.BarcodeFormat;
@@ -22,17 +23,11 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
-import androidx.appcompat.app.AlertDialog;
-
 import io.agora.rtc.Constants;
-import io.agora.rtc.IRtcEngineEventHandler;
-import io.agora.rtc.internal.LastmileProbeConfig;
 import tech.xlogix.threeSum.R;
 import tech.xlogix.threeSum.model.ConstantApp;
 
 public class MainActivity extends BaseActivity {
-    private TextView tvLastmileQualityResult;
-    private TextView tvLastmileProbeResult;
     private FirebaseAuth mAuth;
     private ImageView qrcode;
 
@@ -40,19 +35,20 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // tvLastmileQualityResult = findViewById(R.id.tv_lastmile_quality_result);
-        // tvLastmileProbeResult = findViewById(R.id.tv_lastmile_Probe_result);
+        // QR Code
         qrcode = findViewById(R.id.barcode);
-        mAuth= FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        // QR code scanner
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
-        try{
-            BitMatrix bitMatrix = multiFormatWriter.encode(mAuth.getCurrentUser().getUid(), BarcodeFormat.QR_CODE, 200, 200);
+        try {
+            BitMatrix bitMatrix = multiFormatWriter.encode(mAuth.getCurrentUser().getUid(), BarcodeFormat.QR_CODE, 320, 320);
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
-            qrcode.setImageBitmap(bitmap);}
-        catch (WriterException e) {
+            qrcode.setImageBitmap(bitmap);
+        } catch (WriterException e) {
             e.printStackTrace();
         }
+
     }
 
     @Override

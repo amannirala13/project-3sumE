@@ -1,4 +1,4 @@
-package tech.xlogix.threeSum.ui;
+package tech.xlogix.threeSum.ui.liveRoom;
 
 import android.app.Activity;
 import android.content.Context;
@@ -24,6 +24,7 @@ import java.util.Iterator;
 import tech.xlogix.threeSum.R;
 import tech.xlogix.threeSum.model.ConstantApp;
 import tech.xlogix.threeSum.model.VideoStatusData;
+import tech.xlogix.threeSum.ui.OnDoubleTapListener;
 
 
 public class GridVideoViewContainerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

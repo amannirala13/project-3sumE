@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 
 import tech.xlogix.threeSum.model.VideoStatusData;
+import tech.xlogix.threeSum.ui.liveRoom.VideoViewAdapter;
+import tech.xlogix.threeSum.ui.liveRoom.VideoViewEventListener;
 
 
 public class SmallVideoViewAdapter extends VideoViewAdapter {

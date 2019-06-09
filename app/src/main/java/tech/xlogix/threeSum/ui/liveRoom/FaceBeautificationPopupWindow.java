@@ -1,4 +1,4 @@
-package tech.xlogix.threeSum.ui;
+package tech.xlogix.threeSum.ui.liveRoom;
 
 import android.content.Context;
 import android.view.LayoutInflater;

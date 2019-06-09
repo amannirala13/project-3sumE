@@ -5,6 +5,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/gradient"
-        tools:context=".auth.VerifyOTP">
+        tools:context=".ui.auth.VerifyOTP">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

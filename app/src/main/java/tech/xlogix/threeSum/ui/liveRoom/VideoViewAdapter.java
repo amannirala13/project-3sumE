@@ -1,4 +1,4 @@
-package tech.xlogix.threeSum.ui;
+package tech.xlogix.threeSum.ui.liveRoom;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,6 +21,7 @@ import java.util.HashMap;
 
 import tech.xlogix.threeSum.R;
 import tech.xlogix.threeSum.model.VideoStatusData;
+import tech.xlogix.threeSum.ui.OnDoubleTapListener;
 
 
 public abstract class VideoViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
