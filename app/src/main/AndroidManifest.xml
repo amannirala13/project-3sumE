@@ -38,18 +38,18 @@
 			android:name=".ui.SplashActivity"
 			android:screenOrientation="portrait"
 			android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
-				<category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
 
-				<data android:scheme="usher" />
-			</intent-filter>
+                <data android:scheme="usher" />
+            </intent-filter>
 		</activity>
 
 		<activity
@@ -64,6 +64,7 @@
 			android:name=".ui.PreMainActivity"
 			android:label="@string/app_name"
 			android:screenOrientation="portrait" />
+
 
 		<activity
 			android:name=".ui.CheckInActivity"
