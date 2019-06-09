@@ -36,7 +36,6 @@
 				android:layout_marginStart="12dp"
 				android:layout_marginEnd="12dp"
 				android:layout_weight="3"
-				android:background="@drawable/white_fullround_btn"
 				android:orientation="horizontal">
 
 				<TextView
@@ -45,6 +44,7 @@
 					android:layout_height="wrap_content"
 					android:layout_gravity="center"
 					android:layout_weight="1.5"
+					android:background="@drawable/white_fullround_btn"
 					android:paddingStart="16dp"
 					android:paddingEnd="16dp"
 					android:textColor="@color/colorPrimary"
@@ -84,7 +84,7 @@
 			android:layout_marginEnd="12dp"
 			android:layout_marginBottom="80dp"
 			android:orientation="vertical"
-			android:weightSum="4">
+			android:weightSum="5">
 
 			<ImageView
 				android:layout_width="match_parent"
@@ -93,14 +93,6 @@
 				android:layout_weight="1"
 				android:onClick="onShowHideClicked"
 				android:src="@drawable/btn_hide" />
-
-			<ImageView
-				android:id="@+id/btn_1"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:layout_margin="8dp"
-				android:layout_weight="1"
-				android:src="@drawable/btn_request_broadcast_2" />
 
 			<ImageView
 				android:id="@+id/btn_2"
@@ -118,7 +110,14 @@
 				android:layout_weight="1"
 				android:src="@drawable/btn_mute" />
 
-			<!--
+			<ImageView
+				android:id="@+id/btn_1"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_margin="8dp"
+				android:layout_weight="1"
+				android:src="@drawable/btn_request_broadcast_2" />
+
 			<ImageView
 				android:id="@+id/btn_4"
 				android:layout_width="match_parent"
@@ -126,9 +125,8 @@
 				android:layout_margin="8dp"
 				android:layout_weight="1"
 				android:onClick="onBtn4Clicked"
-				android:src="@drawable/hand" />
+				android:src="@drawable/btn_beautification" />
 
-			-->
 		</tech.xlogix.threeSum.utils.AGLinearLayout>
 
 		<tech.xlogix.threeSum.ui.videoEmoticans.EmoticonsView

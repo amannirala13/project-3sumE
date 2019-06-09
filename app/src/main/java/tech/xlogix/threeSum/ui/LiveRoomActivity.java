@@ -38,6 +38,7 @@ import io.reactivex.FlowableEmitter;
 import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.schedulers.Timed;
 import tech.xlogix.threeSum.R;
+import tech.xlogix.threeSum.common.Constant;
 import tech.xlogix.threeSum.model.AGEventHandler;
 import tech.xlogix.threeSum.model.ConstantApp;
 import tech.xlogix.threeSum.model.VideoStatusData;
@@ -404,10 +405,6 @@ public class LiveRoomActivity extends BaseActivity implements AGEventHandler {
     private FaceBeautificationPopupWindow mFaceBeautificationPopupWindow;
 
     public void onBtn4Clicked(View view) {
-        Toast.makeText(this, "Heads up! The speaker will get back to you shortly.", Toast.LENGTH_SHORT).show();
-    }
-
-    /*public void onBtn4Clicked(View view) {
         if (isBroadcaster()) {
             if (mFaceBeautificationPopupWindow == null) {
                 mFaceBeautificationPopupWindow = new FaceBeautificationPopupWindow(this.getBaseContext());
@@ -450,7 +447,7 @@ public class LiveRoomActivity extends BaseActivity implements AGEventHandler {
                 }
             });
         }
-    }*/
+    }
 
     @Override
     public void onFirstRemoteVideoDecoded(int uid, int width, int height, int elapsed) {
