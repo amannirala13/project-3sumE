@@ -24,17 +24,17 @@
 		app:layout_constraintTop_toTopOf="parent">
 
 		<TextView
-
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="Welcome to 3SomE"
+			android:layout_gravity="center"
+			android:text="Welcome to 3SomE App!"
 			android:textColor="#606060"
 			android:textSize="20sp" />
 
 		<TextView
-
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:layout_gravity="center"
 			android:text="Please tell us about yourself"
 			android:textColor="#606060"
 			android:textSize="20sp" />
@@ -68,7 +68,7 @@
 			android:layout_marginBottom="16dp"
 			android:background="@drawable/textfield_grey_round"
 			android:padding="10dp"
-			android:textColorHint="#61000000">>
+			android:textColorHint="#61000000">
 
 			<com.google.android.material.textfield.TextInputEditText
 				android:id="@+id/email"
@@ -83,27 +83,18 @@
 				android:textColorLink="#000" />
 		</com.google.android.material.textfield.TextInputLayout>
 
-
 		<Button
 			android:id="@+id/done"
 			android:layout_width="150dp"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
-			android:background="@drawable/white_round_btn"
+			android:layout_marginTop="72dp"
+			android:background="@drawable/rounded_bg"
 			android:padding="19dp"
 			android:shadowColor="#33606060"
 			android:shadowRadius="10"
 			android:text="Done"
-			android:textColor="#9b9b9b" />
-
-		<Button
-			android:id="@+id/button11"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:background="@android:color/transparent"
-			android:paddingTop="8dp"
-			android:text="Already have an account? Login Here!"
-			android:textColor="#d35400" />
+			android:textColor="@color/white" />
 	</LinearLayout>
 
 	<LinearLayout
@@ -132,6 +123,6 @@
 			android:textColor="@color/colorPrimary"
 			android:textSize="30sp"
 			android:textStyle="bold" />
-
 	</LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

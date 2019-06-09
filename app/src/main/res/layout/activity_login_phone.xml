@@ -70,7 +70,7 @@
 			android:paddingRight="43dp"
 			android:paddingBottom="20dp"
 			android:text="GET OTP"
-			android:textColor="#d35400 "
+			android:textColor="@color/colorPrimary"
 			android:textSize="16sp" />
 
 	</LinearLayout>
@@ -119,7 +119,6 @@
 			android:layout_marginTop="60dp"
 			android:text="Enter the code sent to you at "
 			android:textColor="#fff"
-
 			android:textSize="20sp" />
 
 		<TextView
@@ -158,13 +157,13 @@
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
 			android:layout_marginTop="30dp"
-			android:background="#ffffff"
+			android:background="@drawable/white_fullround_btn"
 			android:paddingLeft="43dp"
 			android:paddingTop="20dp"
 			android:paddingRight="43dp"
 			android:paddingBottom="20dp"
 			android:text="DONE"
-			android:textColor="#d35400 "
+			android:textColor="@color/colorPrimary"
 			android:textSize="16sp" />
 
 		<Button

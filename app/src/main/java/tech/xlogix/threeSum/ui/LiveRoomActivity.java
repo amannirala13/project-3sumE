@@ -16,6 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,7 +38,6 @@ import io.reactivex.FlowableEmitter;
 import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.schedulers.Timed;
 import tech.xlogix.threeSum.R;
-import tech.xlogix.threeSum.common.Constant;
 import tech.xlogix.threeSum.model.AGEventHandler;
 import tech.xlogix.threeSum.model.ConstantApp;
 import tech.xlogix.threeSum.model.VideoStatusData;
@@ -272,7 +272,7 @@ public class LiveRoomActivity extends BaseActivity implements AGEventHandler {
 
         worker().joinChannel(roomName, config().mUid);
 
-        TextView textRoomName = (TextView) findViewById(R.id.room_name);
+        TextView textRoomName = findViewById(R.id.room_name);
         textRoomName.setText(roomName);
     }
 
@@ -393,17 +393,21 @@ public class LiveRoomActivity extends BaseActivity implements AGEventHandler {
         if (isBroadcaster()) {
             button2.setVisibility(hide ? View.INVISIBLE : View.VISIBLE);
             button3.setVisibility(hide ? View.INVISIBLE : View.VISIBLE);
-            button4.setVisibility(hide ? View.INVISIBLE : View.VISIBLE);
+            button4.setVisibility(hide ? View.VISIBLE : View.INVISIBLE);
         } else {
             button2.setVisibility(View.INVISIBLE);
             button3.setVisibility(View.INVISIBLE);
-            button4.setVisibility(View.INVISIBLE);
+            button4.setVisibility(View.VISIBLE);
         }
     }
 
     private FaceBeautificationPopupWindow mFaceBeautificationPopupWindow;
 
     public void onBtn4Clicked(View view) {
+        Toast.makeText(this, "Heads up! The speaker will get back to you shortly.", Toast.LENGTH_SHORT).show();
+    }
+
+    /*public void onBtn4Clicked(View view) {
         if (isBroadcaster()) {
             if (mFaceBeautificationPopupWindow == null) {
                 mFaceBeautificationPopupWindow = new FaceBeautificationPopupWindow(this.getBaseContext());
@@ -446,7 +450,7 @@ public class LiveRoomActivity extends BaseActivity implements AGEventHandler {
                 }
             });
         }
-    }
+    }*/
 
     @Override
     public void onFirstRemoteVideoDecoded(int uid, int width, int height, int elapsed) {
@@ -457,9 +461,9 @@ public class LiveRoomActivity extends BaseActivity implements AGEventHandler {
         final int uid = config().mUid;
         log.debug("doSwitchToBroadcaster " + currentHostCount + " " + (uid & 0XFFFFFFFFL) + " " + broadcaster);
 
-        final ImageView button1 = (ImageView) findViewById(R.id.btn_1);
-        final ImageView button2 = (ImageView) findViewById(R.id.btn_2);
-        final ImageView button3 = (ImageView) findViewById(R.id.btn_3);
+        final ImageView button1 = findViewById(R.id.btn_1);
+        final ImageView button2 = findViewById(R.id.btn_2);
+        final ImageView button3 = findViewById(R.id.btn_3);
         if (broadcaster) {
             doConfigEngine(Constants.CLIENT_ROLE_BROADCASTER);
 
@@ -671,7 +675,7 @@ public class LiveRoomActivity extends BaseActivity implements AGEventHandler {
 
     private void bindToSmallVideoView(int exceptUid) {
         if (mSmallVideoViewDock == null) {
-            ViewStub stub = (ViewStub) findViewById(R.id.small_video_view_dock);
+            ViewStub stub = findViewById(R.id.small_video_view_dock);
             mSmallVideoViewDock = (RelativeLayout) stub.inflate();
         }
 

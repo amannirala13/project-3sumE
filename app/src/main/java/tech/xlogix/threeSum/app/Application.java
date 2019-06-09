@@ -5,7 +5,6 @@ import tech.xlogix.threeSum.model.WorkerThread;
 public class Application extends android.app.Application {
     private final String TAG = Application.class.getSimpleName();
 
-
     private static Application mInstance;
 
     public static Application the() {
@@ -15,7 +14,6 @@ public class Application extends android.app.Application {
     public Application() {
         mInstance = this;
     }
-
 
     private WorkerThread mWorkerThread;
 

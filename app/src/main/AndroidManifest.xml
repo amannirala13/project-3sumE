@@ -53,26 +53,36 @@
 		</activity>
 
 		<activity
-			android:name=".ui.MainActivity"
-			android:label="@string/app_name"
-			android:screenOrientation="portrait" />
-
-		<activity
 			android:name=".ui.LoginPhoneActivity"
 			android:theme="@style/AppTheme.NoActionBar" />
 
 		<activity
 			android:name=".ui.auth.FirstTimeUser"
-			android:theme="@style/AppTheme.NoActionBar"/>
+			android:theme="@style/AppTheme.NoActionBar" />
+
+		<activity
+			android:name=".ui.PreMainActivity"
+			android:label="@string/app_name"
+			android:screenOrientation="portrait" />
+
+		<activity
+			android:name=".ui.CheckInActivity"
+			android:label="@string/app_name" />
+
+		<activity
+			android:name=".ui.MainActivity"
+			android:label="@string/app_name"
+			android:screenOrientation="portrait" />
+
+		<activity
+			android:name=".ui.SettingsActivity"
+			android:label="@string/label_settings"
+			android:screenOrientation="portrait" />
 
 		<activity
 			android:name=".ui.LiveRoomActivity"
 			android:screenOrientation="portrait"
 			android:theme="@style/FullscreenTheme" />
-		<activity
-			android:name=".ui.SettingsActivity"
-			android:label="@string/label_settings"
-			android:screenOrientation="portrait" />
 	</application>
 
 </manifest>

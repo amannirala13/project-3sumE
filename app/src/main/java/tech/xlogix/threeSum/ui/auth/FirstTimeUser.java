@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -14,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -32,7 +32,7 @@ import tech.xlogix.threeSum.ui.MainActivity;
 
 public class FirstTimeUser extends AppCompatActivity {
 
-    EditText fullname, email, dateofbirth;
+    TextInputEditText fullName, email;
     FirebaseAuth auth;
     FirebaseUser mFirebaseUser;
     LinearLayout progressview, mainview;
@@ -44,7 +44,7 @@ public class FirstTimeUser extends AppCompatActivity {
         setContentView(R.layout.activity_first_time_user);
         auth = FirebaseAuth.getInstance();
         mFirebaseUser = auth.getCurrentUser();
-        fullname = findViewById(R.id.fullname);
+        fullName = findViewById(R.id.fullname);
         email = findViewById(R.id.email);
         done = findViewById(R.id.done);
         progressview = findViewById(R.id.progressview);
@@ -70,9 +70,9 @@ public class FirstTimeUser extends AppCompatActivity {
                 showProgress();
                 boolean error = false;
 
-                if (fullname.getText().toString().isEmpty()) {
+                if (fullName.getText().toString().isEmpty()) {
                     error = true;
-                    fullname.setError("Full Name is Required");
+                    fullName.setError("Full Name is Required");
                 }
 
                 if (email.getText().toString().isEmpty()) {
@@ -80,20 +80,14 @@ public class FirstTimeUser extends AppCompatActivity {
                     email.setError("Full Name is Required");
                 }
 
-
-                if (dateofbirth.getText().toString().isEmpty()) {
-                    error = true;
-                    dateofbirth.setError("Full Name is Required");
-                }
-
                 if (!error) {
 
-                    String FullName = fullname.getText().toString();
-                    final String Email = email.getText().toString();
+                    String FullName = fullName.getText().toString();
+                    String Email = email.getText().toString();
 
                     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Users");
                     String date = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(new Date());
-                    String profilepic = mFirebaseUser.getPhotoUrl().toString();
+                    String profilepic = Uri.parse("https://firebasestorage.googleapis.com/v0/b/usher-edutech.appspot.com/o/avatar.png?alt=media&token=d1dd4cce-e778-47de-9600-69f829d49923").toString();
                     User users = new User(FullName, Email, mFirebaseUser.getPhoneNumber(), "Student", "NA", date, profilepic);
 
 
@@ -101,7 +95,6 @@ public class FirstTimeUser extends AppCompatActivity {
                     final UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                             .setDisplayName(FullName)
                             .setPhotoUri(Uri.parse(profilepic))
-
                             .build();
                     mFirebaseUser.updateEmail(Email).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -117,10 +110,8 @@ public class FirstTimeUser extends AppCompatActivity {
                                             }
                                         }
                                     });
-
                         }
                     });
-
 
                 } else {
                     hideProgress();

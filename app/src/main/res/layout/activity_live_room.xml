@@ -45,8 +45,8 @@
 					android:layout_height="wrap_content"
 					android:layout_gravity="center"
 					android:layout_weight="1.5"
-					android:paddingStart="8dp"
-					android:paddingEnd="8dp"
+					android:paddingStart="16dp"
+					android:paddingEnd="16dp"
 					android:textColor="@color/colorPrimary"
 					android:textSize="32sp" />
 
@@ -60,7 +60,7 @@
 					android:text="LIVE"
 					android:textAlignment="center"
 					android:textAllCaps="true"
-					android:textColor="@color/colorPrimary"
+					android:textColor="@color/red"
 					android:textSize="32sp"
 					android:textStyle="bold" />
 			</LinearLayout>
@@ -84,7 +84,7 @@
 			android:layout_marginEnd="12dp"
 			android:layout_marginBottom="80dp"
 			android:orientation="vertical"
-			android:weightSum="5">
+			android:weightSum="4">
 
 			<ImageView
 				android:layout_width="match_parent"
@@ -100,7 +100,7 @@
 				android:layout_height="match_parent"
 				android:layout_margin="8dp"
 				android:layout_weight="1"
-				android:src="@drawable/btn_request_broadcast" />
+				android:src="@drawable/btn_request_broadcast_2" />
 
 			<ImageView
 				android:id="@+id/btn_2"
@@ -118,6 +118,7 @@
 				android:layout_weight="1"
 				android:src="@drawable/btn_mute" />
 
+			<!--
 			<ImageView
 				android:id="@+id/btn_4"
 				android:layout_width="match_parent"
@@ -125,13 +126,15 @@
 				android:layout_margin="8dp"
 				android:layout_weight="1"
 				android:onClick="onBtn4Clicked"
-				android:src="@drawable/btn_beautification" />
+				android:src="@drawable/hand" />
+
+			-->
 		</tech.xlogix.threeSum.utils.AGLinearLayout>
 
 		<tech.xlogix.threeSum.ui.videoEmoticans.EmoticonsView
 			android:id="@+id/custom_view"
 			android:layout_width="match_parent"
-			android:layout_height="120dp"
+			android:layout_height="160dp"
 			android:layout_above="@+id/emoticons_view"
 			android:layout_marginBottom="48dp" />
 

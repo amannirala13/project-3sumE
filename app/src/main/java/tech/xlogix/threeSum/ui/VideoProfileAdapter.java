@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import tech.xlogix.threeSum.R;
 
-
 public class VideoProfileAdapter extends RecyclerView.Adapter {
     private Context context;
 

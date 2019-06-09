@@ -28,7 +28,7 @@ public class SplashActivity extends Activity {
             public void run() {
                 if (FirebaseAuth.getInstance().getCurrentUser() != null) {
                     Log.d("", "Pass to main activity");
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                    startActivity(new Intent(SplashActivity.this, PreMainActivity.class));
                     finish();
                 } else {
                     Log.d("", "Pass to auth activity");

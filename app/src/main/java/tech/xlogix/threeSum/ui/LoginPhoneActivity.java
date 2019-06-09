@@ -208,7 +208,6 @@ public class LoginPhoneActivity extends AppCompatActivity {
 
                 }
 
-
             }
         });
     }
@@ -266,7 +265,7 @@ public class LoginPhoneActivity extends AppCompatActivity {
 
 
                             } else {
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), PreMainActivity.class);
                                 startActivity(intent);
                                 finish();
                             }

@@ -28,27 +28,11 @@ import tech.xlogix.threeSum.R;
 import tech.xlogix.threeSum.model.ConstantApp;
 
 public class MainActivity extends BaseActivity {
-    private FirebaseAuth mAuth;
-    private ImageView qrcode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // QR Code
-        qrcode = findViewById(R.id.barcode);
-        mAuth = FirebaseAuth.getInstance();
-        // QR code scanner
-        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
-        try {
-            BitMatrix bitMatrix = multiFormatWriter.encode(mAuth.getCurrentUser().getUid(), BarcodeFormat.QR_CODE, 320, 320);
-            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-            Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
-            qrcode.setImageBitmap(bitmap);
-        } catch (WriterException e) {
-            e.printStackTrace();
-        }
-
     }
 
     @Override
